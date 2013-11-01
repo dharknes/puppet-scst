@@ -35,9 +35,16 @@
 #
 # Copyright 2013 Your name here, unless otherwise noted.
 #
-class scst {
+class scst::service {
 
-    include scst::install
-    include scst::config
+    service { 'scst':
+        ensure      => running,
+        name        => 'scst',
+        enable      => true,
+        hasstatus   => true,
+        hasrestart  => true,
+        pattern     => 'scst',
+        require     => Class['scst::install'],
+    }
 
 }

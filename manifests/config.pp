@@ -35,9 +35,11 @@
 #
 # Copyright 2013 Your name here, unless otherwise noted.
 #
-class scst {
+class scst::config {
 
-    include scst::install
-    include scst::config
+    exec { 'save_config':
+        command     => '/usr/local/sbin/scstadmin -write_config /etc/scst.conf',
+        refreshonly => true,
+    }
 
 }
