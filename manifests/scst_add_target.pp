@@ -1,9 +1,39 @@
-# Define
-# Add docs!
+# == Define: scst::scst_add_target
+#
+# Creates an LV in volume_group then add the target to the iSCSI-SCST subsystem 
+#
+# === Parameters
+#
+# [*lun_size*]
+# [*initiator_address*]
+# [*initiator_name*]
+#
+# === Variables
+#
+# [*target_name*]
+#
+# === Examples
+#
+#   scst::scst_add_target { "${::hostname}-1": 
+#       initiator_name      => $initiator_name,
+#       initiator_address   => $::ipaddress,
+#       lun_size            => $storage_volume_size,
+#       tag                 => $storage_brick_name,
+#   }
+#
+# === Authors
+#
+# Derek Harkness <dharknes@mac.com>
+#
+# === Copyright
+#
+# Copyright 2013 Derek Harkness, unless otherwise noted.
+#
 define scst::scst_add_target (
-    $lun_size           = '1T',
     $initiator_address,
     $initiator_name,
+    $lun_size           = '1T',
+    $volume_group       = 'Data',
     ) {
 
     $target_name = "iqn.2013-05.edu.merit:${name}"
@@ -21,7 +51,7 @@ define scst::scst_add_target (
 
     logical_volume { $name:
         ensure          => present,
-        volume_group    => 'MeritStorage',
+        volume_group    => $volume_group,
         size            => $lun_size,
         notify          => Exec["resync_size-$target_name"],
     }

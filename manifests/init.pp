@@ -1,39 +1,31 @@
 # == Class: scst
 #
-# Full description of class scst here.
+# SCST is the generic SCSI target subsystem for Linux.  This module attempts 
+# to provide base level management and configuration of SCST and the
+# devices create by it.
+#
+# The base class scst install and configures SCST for adding and managing
+# device.
 #
 # === Parameters
 #
-# Document parameters here.
-#
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
+#   No parameters on this class
 #
 # === Variables
 #
-# Here you should define a list of variables that this module would require.
-#
-# [*sample_variable*]
-#   Explanation of how this variable affects the funtion of this class and if it
-#   has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#   External Node Classifier as a comma separated list of hostnames." (Note,
-#   global variables should not be used in preference to class parameters  as of
-#   Puppet 2.6.)
+#   No variable in this class
 #
 # === Examples
 #
-#  class { scst:
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ]
-#  }
+#   include scst
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Derek Harkness <dharknes@mac.com>
 #
 # === Copyright
 #
-# Copyright 2013 Your name here, unless otherwise noted.
+# Copyright 2013 Derek Harkness, unless otherwise noted.
 #
 class scst {
 
