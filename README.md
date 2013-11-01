@@ -18,19 +18,38 @@ This module is intended to provide basic control and configuration of the the SC
 
 Module Description
 ------------------
+The SCST module makes installing and managing simple and straight forward.  The goal is remove as much complexity from the mange of SCST as possible while maintaining as much of SCST's power and flexibility.
 
 Setup
 -----
+
 
 Upgrading
 ---------
 
 Usage
 -----
+SCST is a fairly complete software package but I've tried to keep this module as simple as possible.  Usage is very straight forward.
+
+    include scst
+
+    scst::scst_add_target { "webdata_target": 
+        initiator_name      => $initiator_name,
+        initiator_address   => $::ipaddress,
+        lun_size            => $storage_volume_size,
+    }
+
+This should be enought to get SCST up and running.
 
 Limitations
 ------------
+Compatible with:
+
+    Puppet Version: 2.7+
+
+Platforms:
+* Centos | RHEL 5 + 6
 
 Development
 ------------
-
+In the not to distant future I am planning on adding Ubuntu support, cleaning up the defined type, and expanding the support SCST options.  My environment is iSCSI heavy so that's where most of my development will be.
